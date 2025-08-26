@@ -5,6 +5,7 @@ import AboutSection from "./AboutSection";
 import SkillsSection from "./SkillsSection";
 import ExperienceSection from "./ExperienceSection";
 import ContactSection from "./ContactSection";
+import InteractiveCursor from "./InteractiveCursor";
 
 const Portfolio = () => {
   useEffect(() => {
@@ -31,6 +32,7 @@ const Portfolio = () => {
 
   return (
     <div className="relative">
+      <InteractiveCursor />
       <Navigation />
       
       <main>
