@@ -8,51 +8,65 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Dark theme focused */
+    --background: 210 24% 6%;
+    --foreground: 210 24% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 24% 8%;
+    --card-foreground: 210 24% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 24% 8%;
+    --popover-foreground: 210 24% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Cyan/Teal accent */
+    --primary: 180 100% 50%;
+    --primary-foreground: 210 24% 6%;
+    --primary-glow: 180 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Deep blue */
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 210 24% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted elements */
+    --muted: 210 24% 12%;
+    --muted-foreground: 210 24% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Golden yellow */
+    --accent: 45 100% 60%;
+    --accent-foreground: 210 24% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 24% 20%;
+    --input: 210 24% 12%;
+    --ring: 180 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(180 100% 50%), hsl(200 100% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%), hsl(30 100% 70%));
+    --gradient-dark: linear-gradient(135deg, hsl(210 24% 6%), hsl(210 24% 12%));
+    --gradient-glow: radial-gradient(circle at center, hsl(180 100% 50% / 0.3), transparent 70%);
+    
+    /* Shadows and effects */
+    --shadow-glow: 0 0 40px hsl(180 100% 50% / 0.3);
+    --shadow-accent: 0 0 40px hsl(45 100% 60% / 0.3);
+    --shadow-elegant: 0 20px 60px hsl(210 24% 6% / 0.8);
+    
+    /* Animation timing */
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 210 24% 8%;
+    --sidebar-foreground: 210 24% 98%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 210 24% 6%;
+    --sidebar-accent: 210 24% 12%;
+    --sidebar-accent-foreground: 210 24% 98%;
+    --sidebar-border: 210 24% 20%;
+    --sidebar-ring: 180 100% 50%;
   }
 
   .dark {
@@ -100,6 +114,70 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(135deg, hsl(210 24% 6%), hsl(210 24% 12%));
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(210 24% 12%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(180 100% 50%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(180 100% 60%);
+  }
+}
+
+@layer components {
+  .glow-text {
+    text-shadow: 0 0 20px hsl(180 100% 50% / 0.5);
+  }
+
+  .glow-accent {
+    text-shadow: 0 0 20px hsl(45 100% 60% / 0.5);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: hsl(210 24% 8% / 0.8);
+    border: 1px solid hsl(210 24% 20%);
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: var(--transition-smooth);
+  }
+
+  .reveal-up.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
