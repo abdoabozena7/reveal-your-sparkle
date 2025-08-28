@@ -21,44 +21,22 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-6">
-          <motion.div
-            ref={ref}
-            className="text-center mb-16"
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { 
-                opacity: 1, 
-                y: 0,
-                transition: {
-                  duration: 0.8,
-                  staggerChildren: 0.2
-                }
-              }
-            }}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            <motion.h2 
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-              className="text-4xl md:text-6xl font-bold mb-6"
-            >
-              About <span className="glow-primary animate-text-shimmer bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent bg-300% animate-text-shimmer">Me</span>
-            </motion.h2>
-            <motion.p 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-            >
-              I'm a passionate web developer from <span className="text-accent glow-accent">Giza, Egypt</span>, with expertise in creating 
-              advanced web applications and immersive <span className="text-secondary glow-secondary">3D experiences</span>. My journey spans from 
-              backend development with PHP to cutting-edge frontend technologies.
-            </motion.p>
-          </motion.div>
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            About <span className="text-primary glow-text">Me</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            I'm a passionate web developer from Giza, Egypt, with expertise in creating 
+            advanced web applications and immersive 3D experiences. My journey spans from 
+            backend development with PHP to cutting-edge frontend technologies.
+          </p>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Story */}
@@ -66,11 +44,10 @@ const AboutSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="floating-slow"
           >
-            <Card className="glass-rainbow border-primary/30 p-8 neon-border hover:shadow-rainbow transition-all duration-300">
+            <Card className="glass-effect border-border/50 p-8">
               <CardContent className="space-y-6">
-                <h3 className="text-2xl font-semibold glow-accent mb-4 animate-rainbow-pulse">
+                <h3 className="text-2xl font-semibold text-accent glow-accent mb-4">
                   My Journey
                 </h3>
                 
@@ -120,11 +97,10 @@ const AboutSection = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="floating"
             >
-              <Card className="glass-rainbow border-secondary/30 p-8 neon-border hover:shadow-rainbow transition-all duration-300">
+              <Card className="glass-effect border-border/50 p-8">
                 <CardContent>
-                  <h3 className="text-2xl font-semibold glow-primary mb-6 animate-glow-pulse">
+                  <h3 className="text-2xl font-semibold text-primary glow-text mb-6">
                     Technical Skills
                   </h3>
                   <div className="flex flex-wrap gap-3">
@@ -137,7 +113,7 @@ const AboutSection = () => {
                       >
                         <Badge 
                           variant="secondary" 
-                          className="px-4 py-2 text-sm font-medium glass-rainbow border border-primary/30 hover:border-accent/60 hover:animate-wiggle transition-all magnetic-element"
+                          className="px-4 py-2 text-sm font-medium bg-secondary/50 border border-primary/20 hover:border-primary/50 transition-all"
                         >
                           {skill}
                         </Badge>
@@ -153,11 +129,10 @@ const AboutSection = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="floating-fast"
             >
-              <Card className="glass-rainbow border-accent/30 p-8 neon-border hover:shadow-rainbow transition-all duration-300">
+              <Card className="glass-effect border-border/50 p-8">
                 <CardContent>
-                  <h3 className="text-2xl font-semibold glow-accent mb-6 animate-rainbow-pulse">
+                  <h3 className="text-2xl font-semibold text-accent glow-accent mb-6">
                     Languages
                   </h3>
                   <div className="space-y-4">
@@ -167,10 +142,10 @@ const AboutSection = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.1 * index }}
-                        className="flex justify-between items-center p-4 rounded-lg glass-effect border border-primary/20 hover:border-accent/50 magnetic-element hover:animate-wiggle transition-all duration-300"
+                        className="flex justify-between items-center p-3 rounded-lg bg-muted/30 border border-border/30"
                       >
                         <span className="font-medium text-foreground">{language.name}</span>
-                        <Badge variant="outline" className="border-primary/50 text-primary glow-primary animate-pulse">
+                        <Badge variant="outline" className="border-primary/50 text-primary">
                           {language.level}
                         </Badge>
                       </motion.div>

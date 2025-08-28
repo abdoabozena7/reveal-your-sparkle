@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import EnhancedScene3D from "./EnhancedScene3D";
-import MagneticButton from "./MagneticButton";
+import Scene3D from "./Scene3D";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -92,9 +91,9 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Enhanced Background 3D Scene */}
-      <div className="absolute inset-0 opacity-30">
-        <EnhancedScene3D cameraPosition={[0, 0, 8]} showElements={false} intensity={0.8} />
+      {/* Background 3D Scene */}
+      <div className="absolute inset-0 opacity-20">
+        <Scene3D cameraPosition={[0, 0, 8]} showSphere={false} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -105,12 +104,12 @@ const ContactSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Let's <span className="glow-primary animate-text-shimmer bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent bg-300%">Connect</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Let's <span className="text-primary glow-text">Connect</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss how we can work together 
-            to create something <span className="text-accent glow-accent animate-pulse">amazing</span>.
+            to create something amazing.
           </p>
         </motion.div>
 
@@ -120,11 +119,10 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="floating"
           >
-            <Card className="glass-rainbow border-primary/30 p-8 neon-border hover:shadow-rainbow transition-all duration-300">
+            <Card className="glass-effect border-border/50 p-8">
               <CardContent>
-                <h3 className="text-2xl font-bold glow-accent mb-6 animate-rainbow-pulse">
+                <h3 className="text-2xl font-bold text-accent glow-accent mb-6">
                   Send Me a Message
                 </h3>
                 
@@ -139,7 +137,7 @@ const ContactSection = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your full name"
-                        className="magnetic-element bg-muted/30 border-primary/20 focus:border-accent hover:border-secondary transition-all duration-300"
+                        className="bg-muted/30 border-border/50 focus:border-primary"
                         required
                       />
                     </div>
@@ -154,7 +152,7 @@ const ContactSection = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="magnetic-element bg-muted/30 border-primary/20 focus:border-accent hover:border-secondary transition-all duration-300"
+                        className="bg-muted/30 border-border/50 focus:border-primary"
                         required
                       />
                     </div>
@@ -169,7 +167,7 @@ const ContactSection = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="Project discussion, collaboration, etc."
-                      className="magnetic-element bg-muted/30 border-primary/20 focus:border-accent hover:border-secondary transition-all duration-300"
+                      className="bg-muted/30 border-border/50 focus:border-primary"
                     />
                   </div>
                   
@@ -182,18 +180,17 @@ const ContactSection = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell me about your project or idea..."
-                      className="magnetic-element bg-muted/30 border-primary/20 focus:border-accent hover:border-secondary min-h-[120px] transition-all duration-300"
+                      className="bg-muted/30 border-border/50 focus:border-primary min-h-[120px]"
                       required
                     />
                   </div>
                   
-                  <MagneticButton 
-                    onClick={() => handleSubmit({ preventDefault: () => {} } as React.FormEvent)}
-                    variant="primary"
-                    className="w-full py-4 text-lg"
+                  <Button 
+                    type="submit"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-medium animate-glow-pulse"
                   >
-                    Send Message ✨
-                  </MagneticButton>
+                    Send Message
+                  </Button>
                 </form>
               </CardContent>
             </Card>
@@ -206,11 +203,10 @@ const ContactSection = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="floating-slow"
             >
-              <Card className="glass-rainbow border-secondary/30 p-8 neon-border hover:shadow-rainbow transition-all duration-300">
+              <Card className="glass-effect border-border/50 p-8">
                 <CardContent>
-                  <h3 className="text-2xl font-bold glow-primary mb-6 animate-glow-pulse">
+                  <h3 className="text-2xl font-bold text-primary glow-text mb-6">
                     Contact Information
                   </h3>
                   
@@ -221,7 +217,7 @@ const ContactSection = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                        className="flex items-center space-x-4 p-4 rounded-lg glass-effect border border-accent/20 hover:border-primary/50 magnetic-element hover:animate-wiggle transition-all duration-300"
+                        className="flex items-center space-x-4 p-3 rounded-lg bg-muted/30 border border-border/30"
                       >
                         <span className="text-2xl">{info.icon}</span>
                         <div>
