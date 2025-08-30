@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import FloatingCards3D from "./FloatingCards3D";
-import Interactive3DShowcase from "./Interactive3DShowcase";
+import InspiredShowcase3D from "./InspiredShowcase3D";
 
 const SkillsSection = () => {
   const ref = useRef(null);
@@ -14,31 +14,36 @@ const SkillsSection = () => {
       id: "frontend",
       title: "Frontend Development",
       description: "React, TypeScript, Next.js, Tailwind CSS",
-      color: "#00ff88"
+      color: "#00ff88",
+      icon: "🌐"
     },
     {
       id: "3d",
       title: "3D Development",
       description: "Three.js, React Three Fiber, Blender",
-      color: "#88ffdd"
+      color: "#44ff99",
+      icon: "🎨"
     },
     {
       id: "design",
       title: "UI/UX Design", 
       description: "Figma, Adobe Creative Suite, Prototyping",
-      color: "#ff6699"
+      color: "#66ffaa",
+      icon: "✨"
     },
     {
       id: "backend",
       title: "Backend Development",
       description: "Node.js, Python, Database Design",
-      color: "#ffaa44"
+      color: "#88ffdd",
+      icon: "🗄️"
     },
     {
       id: "mobile",
       title: "Mobile Development",
       description: "React Native, Flutter, iOS & Android",
-      color: "#aaffaa"
+      color: "#aaffbb",
+      icon: "📱"
     }
   ];
 
@@ -87,8 +92,8 @@ const SkillsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            My <span className="text-primary glow-text">Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 glow-nature">
+            My <span className="text-primary">Technical Universe</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A comprehensive set of technical skills developed through years of experience
@@ -106,11 +111,11 @@ const SkillsSection = () => {
           >
             <Card className="glass-rainbow border-primary/30 p-4 h-[500px] neon-border">
               <CardContent className="h-full">
-                <h3 className="text-xl font-semibold text-center mb-4 glow-primary">
-                  Interactive Skills Universe
+                <h3 className="text-xl font-semibold text-center mb-4 glow-nature">
+                  Nature-Inspired Skills Universe
                 </h3>
                 <div className="h-[420px] rounded-lg overflow-hidden">
-                  <Interactive3DShowcase 
+                  <InspiredShowcase3D 
                     items={skillsData}
                     selectedId={selectedSkill}
                     onSelect={setSelectedSkill}
