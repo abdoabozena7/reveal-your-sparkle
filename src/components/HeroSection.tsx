@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import EnhancedScene3D from "./EnhancedScene3D";
+import SurrealScene3D from "./SurrealScene3D";
+import FloatingGallery from "./FloatingGallery";
+import Clay3DInput from "./Clay3DInput";
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -47,150 +49,174 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced 3D Background */}
-      <div className="absolute inset-0 opacity-60">
-        <EnhancedScene3D />
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Surreal 3D Background */}
+      <div className="absolute inset-0 opacity-80">
+        <SurrealScene3D />
       </div>
 
-      {/* Interactive Particles */}
-      {particles.map((particle) => (
-        <div
-          key={particle.id}
-          className="interactive-particle animate-fade-in-scale"
-          style={{
-            left: particle.x,
-            top: particle.y,
-          }}
-        />
-      ))}
+      {/* Soft gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/60" />
 
-      {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/70 to-background/85" />
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      {/* Main Content Container */}
+      <div className="relative z-10 container mx-auto px-6 text-center space-y-16">
+        
+        {/* Hero Text Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          style={{
-            transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-          }}
-          className="space-y-6"
+          className="space-y-8"
         >
-          {/* Name with Rainbow Effect */}
+          {/* Main Heading */}
           <motion.h1
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl md:text-8xl font-bold leading-tight"
+            className="text-6xl md:text-9xl font-black leading-tight tracking-tight"
           >
-            <span 
-              className="glow-primary animate-glow-pulse"
-              style={{
-                background: 'linear-gradient(45deg, #ff00ff, #00ffff, #ff0080)',
-                backgroundSize: '300% 300%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                animation: 'text-shimmer 3s ease-in-out infinite',
+            <motion.span 
+              className="nature-glow block"
+              animate={{
+                textShadow: [
+                  "0 0 20px hsl(var(--primary) / 0.6)",
+                  "0 0 40px hsl(var(--primary) / 0.8)",
+                  "0 0 20px hsl(var(--primary) / 0.6)",
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
               }}
             >
-              Abdelrahman
-            </span>
-            <br />
-            <span className="text-accent glow-accent animate-rainbow-pulse">Mohamed</span>
+              Digital
+            </motion.span>
+            <motion.span 
+              className="text-foreground block"
+              style={{
+                background: 'var(--gradient-nature)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Artisan
+            </motion.span>
           </motion.h1>
 
-          {/* Animated Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
-          >
-            <p className="text-xl md:text-3xl font-light mb-2">
-              <span className="text-secondary glow-secondary">Web Developer</span>
-              <span className="text-muted-foreground mx-2">&</span>
-              <span className="text-success glow-accent animate-pulse">3D Experience Creator</span>
-            </p>
-            <div className="flex justify-center space-x-4 text-sm">
-              <span className="px-3 py-1 rounded-full glass-rainbow animate-float">React</span>
-              <span className="px-3 py-1 rounded-full glass-rainbow animate-float" style={{animationDelay: '0.5s'}}>Three.js</span>
-              <span className="px-3 py-1 rounded-full glass-rainbow animate-float" style={{animationDelay: '1s'}}>TypeScript</span>
-            </div>
-          </motion.div>
-
-          {/* Description */}
+          {/* Tagline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl md:text-2xl font-medium text-muted-foreground max-w-3xl mx-auto leading-relaxed"
           >
-            Experienced in advanced web development with expertise in React, Node.js, and Three.js.
-            Creating immersive digital experiences that push the boundaries of web technology.
+            Crafting immersive digital experiences where technology meets nature's organic beauty
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12"
           >
-            <Button 
-              onClick={scrollToContact}
-              size="lg"
-              className="relative bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg font-bold animate-glow-pulse magnetic-element neon-border group overflow-hidden"
+            <motion.div
+              whileHover={{ scale: 1.05, rotateY: 5 }}
+              whileTap={{ scale: 0.98 }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <span className="relative z-10">Get In Touch</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="relative border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-4 text-lg font-bold magnetic-element glass-rainbow group overflow-hidden"
+              <Button 
+                onClick={scrollToContact}
+                size="lg"
+                className="clay-button px-10 py-6 text-lg font-bold nature-glow bg-primary text-primary-foreground hover:shadow-nature-glow"
+              >
+                Start Your Journey ✨
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.05, rotateY: -5 }}
+              whileTap={{ scale: 0.98 }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <span className="relative z-10 glow-secondary">View Projects</span>
-              <div className="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            </Button>
+              <Button 
+                variant="outline"
+                size="lg"
+                className="clay-button px-10 py-6 text-lg font-bold border-2 border-primary/50 text-foreground hover:bg-primary/10"
+              >
+                Explore Gallery 🎨
+              </Button>
+            </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Scroll Indicator */}
+        {/* Floating Gallery Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="relative"
+        >
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="text-2xl md:text-3xl font-bold text-foreground mb-8 nature-glow"
+          >
+            Skills & Expertise
+          </motion.h2>
+          <FloatingGallery />
+        </motion.div>
+
+        {/* Interactive Input Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 1 }}
+          className="relative"
+        >
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.6, duration: 0.8 }}
+            className="text-2xl md:text-3xl font-bold text-foreground mb-8 nature-glow"
+          >
+            Let's Create Something Amazing
+          </motion.h2>
+          <Clay3DInput />
+        </motion.div>
+
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
+          transition={{ delay: 2, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <div className="flex flex-col items-center space-y-3">
-            <span className="text-sm text-muted-foreground glow-secondary">Scroll to explore the magic</span>
-            <motion.div
-              animate={{ y: [0, 15, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="relative"
-            >
-              <div className="w-8 h-14 border-2 border-primary rounded-full flex justify-center glass-rainbow">
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="clay-card p-4"
+          >
+            <div className="flex flex-col items-center space-y-2">
+              <span className="text-sm text-muted-foreground">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
                 <motion.div 
                   animate={{ 
-                    y: [0, 20, 0],
-                    scale: [1, 1.5, 1],
+                    y: [0, 16, 0],
+                    opacity: [0.5, 1, 0.5],
                   }}
                   transition={{ 
                     repeat: Infinity, 
                     duration: 2,
                     ease: "easeInOut"
                   }}
-                  className="w-2 h-4 bg-gradient-to-b from-primary to-accent rounded-full mt-2 animate-rainbow-pulse" 
+                  className="w-1 h-3 bg-primary rounded-full mt-2" 
                 />
               </div>
-              <div className="absolute inset-0 animate-pulse">
-                <div className="w-8 h-14 border border-accent rounded-full opacity-50"></div>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
