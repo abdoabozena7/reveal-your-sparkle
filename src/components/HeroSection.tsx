@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import EnhancedScene3D from "./EnhancedScene3D";
+import FloatingCards3D from "./FloatingCards3D";
+import GlowingText3D from "./GlowingText3D";
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -48,9 +49,9 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced 3D Background */}
-      <div className="absolute inset-0 opacity-60">
-        <EnhancedScene3D />
+      {/* 3D Floating Cards Background */}
+      <div className="absolute inset-0 opacity-40">
+        <FloatingCards3D showCards={false} intensity={0.8} />
       </div>
 
       {/* Interactive Particles */}
@@ -79,28 +80,18 @@ const HeroSection = () => {
           }}
           className="space-y-6"
         >
-          {/* Name with Rainbow Effect */}
-          <motion.h1
+          {/* 3D Glowing Text */}
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl md:text-8xl font-bold leading-tight"
+            className="mb-8"
           >
-            <span 
-              className="glow-primary animate-glow-pulse"
-              style={{
-                background: 'linear-gradient(45deg, #ff00ff, #00ffff, #ff0080)',
-                backgroundSize: '300% 300%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                animation: 'text-shimmer 3s ease-in-out infinite',
-              }}
-            >
-              Abdelrahman
-            </span>
-            <br />
-            <span className="text-accent glow-accent animate-rainbow-pulse">Mohamed</span>
-          </motion.h1>
+            <GlowingText3D 
+              mainText="Abdelrahman Mohamed"
+              subText="Creative Developer & 3D Artist"
+            />
+          </motion.div>
 
           {/* Animated Title */}
           <motion.div
