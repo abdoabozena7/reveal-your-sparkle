@@ -18,26 +18,26 @@ All colors MUST be HSL.
     --popover: 240 15% 6%;
     --popover-foreground: 210 24% 98%;
 
-    /* Nature-inspired color palette */
-    --primary: 160 100% 50%; /* Emerald Green */
+    /* Vibrant color palette */
+    --primary: 280 100% 70%; /* Electric Purple */
     --primary-foreground: 240 15% 4%;
-    --primary-glow: 160 100% 70%;
+    --primary-glow: 280 100% 80%;
 
-    --secondary: 120 100% 60%; /* Forest Green */
+    --secondary: 195 100% 50%; /* Electric Cyan */
     --secondary-foreground: 240 15% 4%;
-    --secondary-glow: 120 100% 80%;
+    --secondary-glow: 195 100% 70%;
 
-    --accent: 180 100% 50%; /* Cyan */
+    --accent: 340 100% 65%; /* Hot Pink */
     --accent-foreground: 240 15% 4%;
-    --accent-glow: 180 100% 70%;
+    --accent-glow: 340 100% 80%;
 
-    --success: 140 100% 55%; /* Mint Green */
+    --success: 120 100% 50%; /* Neon Green */
     --success-foreground: 240 15% 4%;
-    --success-glow: 140 100% 75%;
+    --success-glow: 120 100% 70%;
 
-    --warning: 200 100% 60%; /* Sky Blue */
+    --warning: 45 100% 60%; /* Electric Orange */
     --warning-foreground: 240 15% 4%;
-    --warning-glow: 200 100% 80%;
+    --warning-glow: 45 100% 80%;
 
     /* Muted elements */
     --muted: 240 15% 10%;
@@ -52,40 +52,34 @@ All colors MUST be HSL.
 
     --radius: 1rem;
 
-    /* Advanced gradients inspired by nature themes */
+    /* Advanced gradients */
     --gradient-rainbow: linear-gradient(45deg, 
-      hsl(160 100% 50%), 
-      hsl(120 100% 60%), 
-      hsl(180 100% 50%), 
-      hsl(200 100% 60%), 
-      hsl(160 100% 70%)
+      hsl(280 100% 70%), 
+      hsl(195 100% 50%), 
+      hsl(340 100% 65%), 
+      hsl(120 100% 50%), 
+      hsl(45 100% 60%)
     );
-    --gradient-primary: linear-gradient(135deg, hsl(160 100% 50%), hsl(120 100% 60%));
-    --gradient-accent: linear-gradient(135deg, hsl(180 100% 50%), hsl(200 100% 60%));
-    --gradient-cyber: linear-gradient(135deg, hsl(120 100% 60%), hsl(160 100% 50%));
-    --gradient-nature: linear-gradient(90deg, 
-      hsl(160 100% 50% / 0.8), 
-      hsl(120 100% 60% / 0.8), 
-      hsl(180 100% 50% / 0.8)
-    );
-    --gradient-glass: linear-gradient(135deg,
-      hsla(160, 100%, 50%, 0.1),
-      hsla(120, 100%, 60%, 0.1),
-      hsla(180, 100%, 50%, 0.1)
+    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(195 100% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(340 100% 65%), hsl(45 100% 60%));
+    --gradient-cyber: linear-gradient(135deg, hsl(195 100% 50%), hsl(280 100% 70%));
+    --gradient-neon: linear-gradient(90deg, 
+      hsl(280 100% 70% / 0.8), 
+      hsl(195 100% 50% / 0.8), 
+      hsl(340 100% 65% / 0.8)
     );
     
-    /* Enhanced shadows and effects inspired by the references */
-    --shadow-primary: 0 0 80px hsl(160 100% 50% / 0.6);
-    --shadow-secondary: 0 0 80px hsl(120 100% 60% / 0.6);
-    --shadow-accent: 0 0 80px hsl(180 100% 50% / 0.6);
-    --shadow-nature: 0 0 120px hsl(160 100% 50% / 0.4), 0 0 160px hsl(120 100% 60% / 0.3);
-    --shadow-elegant: 0 30px 80px hsl(240 15% 4% / 0.9);
-    --shadow-float: 0 20px 40px hsl(160 100% 50% / 0.2);
+    /* Enhanced shadows and effects */
+    --shadow-primary: 0 0 60px hsl(280 100% 70% / 0.4);
+    --shadow-secondary: 0 0 60px hsl(195 100% 50% / 0.4);
+    --shadow-accent: 0 0 60px hsl(340 100% 65% / 0.4);
+    --shadow-rainbow: 0 0 80px hsl(280 100% 70% / 0.3), 0 0 120px hsl(195 100% 50% / 0.2);
+    --shadow-elegant: 0 20px 60px hsl(240 15% 4% / 0.9);
     
-    /* Animation timing for organic feel */
-    --transition-smooth: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-elastic: all 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Animation timing */
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 240 15% 6%;
     --sidebar-foreground: 210 24% 98%;
@@ -216,48 +210,40 @@ All colors MUST be HSL.
 
 @layer components {
   .glow-primary {
-    text-shadow: 0 0 40px hsl(160 100% 50% / 0.8), 0 0 80px hsl(160 100% 50% / 0.4);
+    text-shadow: 0 0 30px hsl(280 100% 70% / 0.8), 0 0 60px hsl(280 100% 70% / 0.4);
   }
 
   .glow-secondary {
-    text-shadow: 0 0 40px hsl(120 100% 60% / 0.8), 0 0 80px hsl(120 100% 60% / 0.4);
+    text-shadow: 0 0 30px hsl(195 100% 50% / 0.8), 0 0 60px hsl(195 100% 50% / 0.4);
   }
 
   .glow-accent {
-    text-shadow: 0 0 40px hsl(180 100% 50% / 0.8), 0 0 80px hsl(180 100% 50% / 0.4);
+    text-shadow: 0 0 30px hsl(340 100% 65% / 0.8), 0 0 60px hsl(340 100% 65% / 0.4);
   }
 
-  .glow-nature {
+  .glow-rainbow {
     text-shadow: 
-      0 0 30px hsl(160 100% 50% / 0.8),
-      0 0 60px hsl(120 100% 60% / 0.6),
-      0 0 90px hsl(180 100% 50% / 0.4);
+      0 0 20px hsl(280 100% 70% / 0.6),
+      0 0 40px hsl(195 100% 50% / 0.4),
+      0 0 60px hsl(340 100% 65% / 0.2);
   }
 
   .glass-effect {
-    backdrop-filter: blur(40px);
-    background: linear-gradient(135deg, 
-      hsla(160, 100%, 50%, 0.05),
-      hsla(120, 100%, 60%, 0.05),
-      hsla(180, 100%, 50%, 0.05)
-    );
-    border: 1px solid hsla(160, 100%, 50%, 0.2);
-    box-shadow: 
-      0 20px 40px hsla(240, 15%, 4%, 0.5),
-      inset 0 1px 0 hsla(160, 100%, 50%, 0.1);
+    backdrop-filter: blur(30px);
+    background: hsl(240 15% 6% / 0.7);
+    border: 1px solid hsl(240 15% 20% / 0.5);
+    box-shadow: var(--shadow-elegant);
   }
 
   .glass-rainbow {
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(30px);
     background: linear-gradient(135deg, 
-      hsla(160, 100%, 50%, 0.1), 
-      hsla(120, 100%, 60%, 0.08), 
-      hsla(180, 100%, 50%, 0.1)
+      hsl(280 100% 70% / 0.1), 
+      hsl(195 100% 50% / 0.1), 
+      hsl(340 100% 65% / 0.1)
     );
-    border: 1px solid hsla(160, 100%, 50%, 0.3);
-    box-shadow: 
-      var(--shadow-nature),
-      inset 0 1px 0 hsla(160, 100%, 50%, 0.2);
+    border: 1px solid hsl(280 100% 70% / 0.3);
+    box-shadow: var(--shadow-rainbow);
   }
 
   .floating {
